@@ -1,0 +1,28 @@
+
+#calc h1 {
+  font-size: 2em;
+}
+
+#calc p {
+  font-size: 1em;
+}
+
+#calc .results,
+#calc .error {
+  display: none;
+  padding: 15px;
+  border-radius: 7px;
+  width: 400px;
+}
+
+#calc .results {
+  background-color: #d9edf7;
+  color: #366a96;
+  border: 2px solid #366a96;
+}
+
+#calc .error {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 2px solid #f5c6cb;
+}

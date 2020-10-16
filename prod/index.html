@@ -1,0 +1,70 @@
+<script src="./js/calc.js"></script>
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="https://cdn.jsdelivr.net/npm/pikaday/css/pikaday.css"
+/>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.2/modernizr.js"></script>
+<section id="calc">
+  <div class="licence" data-toggle="buttons">
+    <label class="btn btn-primary active">
+      <input
+        type="radio"
+        name="type"
+        value="learner permit"
+        id="permit"
+        checked
+      />
+      Learner Permit
+    </label>
+    <label class="btn btn-primary">
+      <input type="radio" name="type" value="driving licence" id="licence" />
+      Driving Licence
+    </label>
+  </div>
+
+  <section class="intro">
+    <h2>Learner Permit</h2>
+    <p>
+      Please enter the expiry date as it appears in 4b of your learner permit
+      card.
+    </p>
+  </section>
+  <form>
+    <div class="datepicker">
+      <label for="expiry"></label>
+      <input type="date" id="expiry" value="dd/mm/yyyy" name="expiry" />
+      <span class="validity"></span>
+    </div>
+
+    <button>Calculate Extension</button>
+  </form>
+
+  <section class="display">
+    <div class="results"></div>
+    <div class="error"></div>
+  </section>
+</section>
+
+<script src="https://cdn.jsdelivr.net/npm/pikaday/pikaday.js"></script>
+
+<script>
+  "use strict";
+
+  if (!Modernizr.inputtypes.date) {
+    var picker = new Pikaday({
+      field: document.getElementById("expiry"),
+      defaultDate: new Date(),
+      format: "DD/MM/YYYY",
+      toString: function toString(date, format) {
+        // you should do formatting based on the passed format,
+        // but we will just return 'DD/MM/YYYY' for simplicity
+        var day = date.getDate();
+        var month = date.getMonth() + 1;
+        var year = date.getFullYear();
+        return "".concat(day, "/").concat(month, "/").concat(year);
+      },
+    });
+  }
+</script>
