@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
-  const calcButton = document.querySelector("#calc form button");
+  const calcButton = document.querySelector("#calc button");
   const licenceCheckbox = document.querySelector("#calc .licence");
-  const error = document.querySelector("#calc .display .error");
-  const results = document.querySelector("#calc .display .results");
+  const error = document.querySelector("#calc .error");
+  const results = document.querySelector("#calc .results");
 
   let LearningPermitExtensions = {
     firstExtensionInMonths: 8,
@@ -247,6 +247,10 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /**
+   * We are checking if the date has come from a browser that supports the HTML5 date input
+   * If it does we use create a new date
+   */
   function getExpiryDate(date) {
     if (isModernBrowser()) {
       var expiry = new Date(date);
@@ -279,7 +283,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return Modernizr.inputtypes.date ? true : false;
   }
 
-  if (isModernBrowser() === false) {
+  if (!isModernBrowser()) {
     $("#expiry").keypress(function (e) {
       return false;
     });

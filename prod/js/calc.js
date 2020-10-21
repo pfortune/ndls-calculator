@@ -224,6 +224,11 @@ document.addEventListener("DOMContentLoaded", function () {
       };
     }
   }
+  /**
+   * We are checking if the date has come from a browser that supports the HTML5 date input
+   * If it does we use create a new date
+   */
+
 
   function getExpiryDate(date) {
     if (isModernBrowser()) {
@@ -255,7 +260,7 @@ document.addEventListener("DOMContentLoaded", function () {
     return Modernizr.inputtypes.date ? true : false;
   }
 
-  if (isModernBrowser() === false) {
+  if (!isModernBrowser()) {
     $("#expiry").keypress(function (e) {
       return false;
     });
